@@ -1,9 +1,10 @@
-![ChatGPT Date Cleaner — Official Banner](assets/banner.png)
+![ChatGPT Date Cleaner banner](assets/banner.png)
+
 # 🧹 ChatGPT Date Cleaner
 
 **Clean your history. Keep what matters.**
 
-![Version](https://img.shields.io/badge/version-1.2.0-blue)
+![Version](https://img.shields.io/badge/version-1.2.1-blue)
 ![Status](https://img.shields.io/badge/status-beta-orange)
 ![Chrome](https://img.shields.io/badge/browser-Google%20Chrome-4285F4)
 ![Manifest](https://img.shields.io/badge/manifest-v3-informational)
@@ -18,7 +19,7 @@
 
 **[Download from GitHub Releases](../../releases)** — choose the latest release and download the ZIP attached under **Assets** (not the auto-generated “Source code” archives).
 
-**Version:** 1.2.0 Beta · **Platform:** Google Chrome (Manifest V3)
+**Version:** 1.2.1 Beta · **Platform:** Google Chrome (Manifest V3)
 
 ## ✨ Features
 
@@ -112,14 +113,16 @@ Find a bug or have a feature suggestion? **[Open a GitHub Issue](../../issues)**
 | `CHANGELOG.md` | Version history |
 | `PRIVACY.md` | Technical privacy notice |
 | `ISTRUZIONI.txt` | Italian quick-start instructions |
+| `assets/` | Chrome icons and project branding images |
+| `LICENSE` | MIT license |
 
 ## ⚖️ License and legal notice
 
-**No open-source license has been selected yet.** Public source availability does not automatically grant permission to reuse or redistribute this code. The repository owner should add a `LICENSE` file before describing the project as open source.
+**License: MIT.** See the repository `LICENSE` file. You may use, modify and redistribute the code under the terms of that license, retaining required copyright and license notices.
 
 The software is provided **“as is”** without warranties to the extent permitted by applicable law. This notice does not exclude rights or liabilities that cannot lawfully be excluded.
 
 ---
 
-**ChatGPT Date Cleaner · v1.2.0 Beta**  
+**ChatGPT Date Cleaner · v1.2.1 Beta**  
 *Independent project — not affiliated with OpenAI.*

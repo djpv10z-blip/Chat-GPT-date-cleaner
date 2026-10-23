@@ -1,4 +1,4 @@
-/* ChatGPT Date Cleaner v1.2.0 — unofficial. No external scripts or telemetry.
+/* ChatGPT Date Cleaner v1.2.1 — unofficial. No external scripts or telemetry.
  * Uses undocumented ChatGPT endpoints, which may change without warning.
  */
 (() => {

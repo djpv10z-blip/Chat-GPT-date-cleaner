@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.2.1 — 2026-10-23
+
+- Added the official Tech Minimal extension icon in **16, 32, 48 and 128 px** sizes.
+- Updated the Chrome Manifest V3 `icons` property and bumped the extension version to `1.2.1`.
+- Included the GitHub project banner, social preview and logo in the source package.
+- Updated project README and packaging instructions.
+- **No functional changes to scanning, chat selection or conversation visibility operations.**
+- This remains an **unofficial experimental beta**. Real ChatGPT deletion/visibility behavior has not been independently validated.
+
 ## v1.2.0 — 2026-10-23
 
 - Draggable and minimizable in-page floating window; minimized icon can also be dragged.

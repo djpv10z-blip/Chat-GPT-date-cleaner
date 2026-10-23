@@ -1,14 +1,20 @@
-
 {
   "manifest_version": 3,
   "name": "ChatGPT Date Cleaner",
-  "version": "1.2.0",
-  "description": "Gestione multilingue delle conversazioni per data con anteprima CSV, finestra mobile e conferme di sicurezza.",
-  "permissions": ["storage"],
+  "version": "1.2.1",
+  "description": "Review and manage older ChatGPT conversations by date; multilingual interface, CSV export and confirmation safeguards. Unofficial beta.",
+  "permissions": [
+    "storage"
+  ],
   "content_scripts": [
     {
-      "matches": ["https://chatgpt.com/*"],
-      "js": ["locales.js", "content.js"],
+      "matches": [
+        "https://chatgpt.com/*"
+      ],
+      "js": [
+        "locales.js",
+        "content.js"
+      ],
       "run_at": "document_idle"
     }
   ],
