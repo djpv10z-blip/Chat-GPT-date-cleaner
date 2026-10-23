@@ -1,0 +1,54 @@
+name: "💡 Feature request"
+description: "Suggest an improvement to the extension."
+title: "[FEATURE] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for your idea! Please describe the user problem before proposing a solution.
+        Do not include private conversation data or authentication details.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Feature area
+      options:
+        - User interface and accessibility
+        - Date filtering and selections
+        - Conversation scan and CSV
+        - Safety and confirmation
+        - Languages and localization
+        - Installation and updates
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      placeholder: Explain what is difficult or missing today.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      placeholder: Describe how you would like this to work.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives or additional context (optional)
+    validations:
+      required: false
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I checked existing issues for similar requests.
+          required: true
+        - label: My request does not include private or authentication information.
+          required: true

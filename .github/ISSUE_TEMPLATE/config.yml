@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "📘 User Guide and FAQ"
+    url: "https://github.com/djpv10z-blip/Chat-GPT-date-cleaner/wiki/FAQ-and-Troubleshooting"
+    about: "Check the guide for installation and troubleshooting before opening an issue."
+  - name: "🔒 Privacy and safety documentation"
+    url: "https://github.com/djpv10z-blip/Chat-GPT-date-cleaner/wiki/Privacy-Policy"
+    about: "Read the privacy policy. Do not disclose sensitive information in public issues."

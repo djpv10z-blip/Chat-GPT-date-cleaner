@@ -1,1 +1,87 @@
-
+name: "🐞 Bug report"
+description: "Report a reproducible problem in ChatGPT Date Cleaner."
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve ChatGPT Date Cleaner!
+        This repository is **public**. Do not share passwords, session cookies, tokens, unredacted conversation titles, private messages, or unredacted CSV exports.
+        The extension is unofficial and currently in Beta.
+  - type: dropdown
+    id: version
+    attributes:
+      label: Extension version
+      options:
+        - 1.2.1 Beta
+        - 1.2.0 Beta
+        - Earlier version
+        - Other / not sure
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected feature
+      options:
+        - Installation or startup
+        - Language and translations
+        - Floating window and minimize
+        - Date selection or filters
+        - Conversation scan
+        - CSV export
+        - Confirmation dialog
+        - Conversation removal
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: What happened?
+      description: Describe the actual behavior without including private data.
+      placeholder: Describe the problem clearly.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      placeholder: What should have happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the extension...
+        2. Select...
+        3. Click...
+        4. Observe...
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Operating system and Chrome version
+      placeholder: "e.g. Windows 11, Chrome 155"
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Additional information (optional)
+      description: Share only redacted screenshots or error messages. Never paste tokens or conversation content.
+    validations:
+      required: false
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Safety checklist
+      options:
+        - label: I searched for an existing issue about this problem.
+          required: true
+        - label: I removed personal and authentication information from my report.
+          required: true
