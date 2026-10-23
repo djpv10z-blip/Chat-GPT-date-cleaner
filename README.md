@@ -1,3 +1,4 @@
+![ChatGPT Date Cleaner — Official Banner](assets/banner.png)
 # 🧹 ChatGPT Date Cleaner
 
 **Clean your history. Keep what matters.**
