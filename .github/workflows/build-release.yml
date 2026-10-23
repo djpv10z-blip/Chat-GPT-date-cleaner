@@ -1,0 +1,112 @@
+
+name: Build Chrome Extension ZIP
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Package Chrome Extension
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build and verify ZIP
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          import re
+          from pathlib import Path
+          from zipfile import ZipFile, ZIP_DEFLATED
+
+          root = Path(".")
+          manifest = json.loads(
+              Path("manifest.json").read_text(encoding="utf-8")
+          )
+
+          assert manifest["manifest_version"] == 3
+
+          version = manifest["version"]
+          assert re.fullmatch(r"\d+\.\d+\.\d+", version)
+
+          files = {"manifest.json"}
+
+          for script in manifest.get("content_scripts", []):
+              files.update(script.get("js", []))
+
+          for size in (16, 32, 48, 128):
+              icon = manifest.get("icons", {}).get(str(size))
+              assert icon, f"Missing icon definition: {size}"
+
+              data = Path(icon).read_bytes()
+
+              assert data[:8] == bytes.fromhex(
+                  "89504e470d0a1a0a"
+              ), f"Invalid PNG: {icon}"
+
+              assert int.from_bytes(
+                  data[16:20], "big"
+              ) == size, f"Invalid icon width: {icon}"
+
+              assert int.from_bytes(
+                  data[20:24], "big"
+              ) == size, f"Invalid icon height: {icon}"
+
+              files.add(icon)
+
+          for optional in (
+              "README.md",
+              "CHANGELOG.md",
+              "PRIVACY.md",
+              "LICENSE",
+              "ISTRUZIONI.txt"
+          ):
+              if Path(optional).is_file():
+                  files.add(optional)
+
+          for filename in files:
+              path = Path(filename)
+
+              assert not path.is_absolute()
+              assert ".." not in path.parts
+              assert path.is_file(), f"Missing file: {filename}"
+
+          output_dir = Path("dist")
+          output_dir.mkdir(exist_ok=True)
+
+          zip_name = (
+              f"ChatGPT_Date_Cleaner_Chrome_v{version}.zip"
+          )
+          zip_path = output_dir / zip_name
+
+          with ZipFile(
+              zip_path, "w", ZIP_DEFLATED
+          ) as archive:
+              for filename in sorted(files):
+                  archive.write(filename, arcname=filename)
+
+          with ZipFile(zip_path) as archive:
+              assert archive.testzip() is None
+              assert "manifest.json" in archive.namelist()
+
+          print(f"Created: {zip_path}")
+          print(f"Files included: {len(files)}")
+          print("ZIP verification passed.")
+          PY
+
+      - name: Display SHA256 checksum
+        run: sha256sum dist/*.zip
+
+      - name: Upload installable package
+        uses: actions/upload-artifact@v4
+        with:
+          name: chatgpt-date-cleaner-installable
+          path: dist/*.zip
+          if-no-files-found: error
+          retention-days: 30
