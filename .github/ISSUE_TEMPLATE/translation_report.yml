@@ -1,7 +1,9 @@
 name: "🌐 Translation improvement"
 description: "Report a mistranslation or suggest better wording."
 title: "[TRANSLATION] "
-labels: ["documentation"]
+
+labels: ["translation"]
+
 body:
   - type: markdown
     attributes:
