@@ -1,0 +1,36 @@
+ChatGPT Date Cleaner 1.2.0 — guida rapida
+=========================================
+
+ATTENZIONE: estensione indipendente, sperimentale e NON ufficiale.
+Prima dell'uso esporta TUTTI i dati da ChatGPT: Impostazioni > Controlli dati > Esporta dati.
+Il CSV generato dall'estensione NON contiene i testi delle conversazioni.
+
+INSTALLAZIONE
+1. Estrai lo ZIP in una cartella stabile del computer.
+2. Chrome > chrome://extensions > Modalità sviluppatore.
+3. Premi "Carica estensione non pacchettizzata".
+4. Seleziona la cartella estratta contenente manifest.json.
+5. Apri o aggiorna https://chatgpt.com e clicca "Pulizia chat per data".
+
+NOVITÀ
+- Trascina la barra superiore verde per spostare la finestra.
+- Usa il pulsante − per ridurla a icona 🧹; fai clic sull'icona per ripristinarla.
+- Alla prima apertura scegli la lingua tra 8 disponibili. Cambia lingua con 🌐.
+- Prima di qualsiasi eliminazione leggi il disclaimer, accettalo mediante
+  la casella dedicata e digita il codice di conferma mostrato.
+- Prima di ogni richiesta di eliminazione viene verificata nuovamente la data
+  lato server. Se i dati non sono verificabili, la procedura si ferma.
+
+UTILIZZO
+1. Scegli la data dalla quale CONSERVARE le chat, giorno incluso.
+2. Premi "Analizza le conversazioni".
+3. Esamina la tabella e scarica il CSV; conferma il backup completo.
+4. Prova prima l'eliminazione di 1 chat non importante.
+5. Ricontrolla su ChatGPT, ripeti la scansione, esporta nuovamente il CSV.
+6. Procedi con ulteriori chat solo dopo la verifica.
+
+NOTA
+Le date sono confrontate nel fuso orario del browser, visibile nell'interfaccia.
+Le API interne di ChatGPT possono cambiare; una risposta positiva non
+certifica da sola la cancellazione definitiva dai sistemi di OpenAI.
+Il disclaimer non esclude diritti o responsabilità inderogabili per legge.
