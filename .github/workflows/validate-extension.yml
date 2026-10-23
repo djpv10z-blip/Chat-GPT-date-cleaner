@@ -1,0 +1,83 @@
+
+name: Validate Chrome Extension
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-extension:
+    name: Validate Chrome Extension
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check content.js
+          node --check locales.js
+
+      - name: Validate manifest and icons
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const assert = require('node:assert/strict');
+
+          const manifest = JSON.parse(
+            fs.readFileSync('manifest.json', 'utf8')
+          );
+
+          assert.equal(manifest.manifest_version, 3);
+          assert.match(manifest.version, /^\d+\.\d+\.\d+$/);
+
+          const scripts = (manifest.content_scripts || [])
+            .flatMap(item => item.js || []);
+
+          assert.ok(scripts.length > 0, 'No content scripts');
+
+          for (const file of scripts) {
+            assert.ok(fs.existsSync(file), `Missing: ${file}`);
+          }
+
+          const sizes = [16, 32, 48, 128];
+          const pngSignature = '89504e470d0a1a0a';
+
+          for (const size of sizes) {
+            const filename = manifest.icons?.[String(size)];
+            assert.ok(filename, `Missing icon ${size}`);
+
+            const data = fs.readFileSync(filename);
+            assert.ok(data.length >= 24, 'Invalid PNG');
+
+            assert.equal(
+              data.subarray(0, 8).toString('hex'),
+              pngSignature
+            );
+
+            assert.equal(data.readUInt32BE(16), size);
+            assert.equal(data.readUInt32BE(20), size);
+
+            console.log(`Icon ${size}x${size}: OK`);
+          }
+
+          console.log('Manifest and assets validated.');
+          NODE
+
+      - name: Validation completed
+        run: echo "Chrome extension validation passed."
